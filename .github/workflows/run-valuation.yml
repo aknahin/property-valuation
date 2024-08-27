@@ -20,4 +20,4 @@ jobs:
       id: result
     
     - name: Output the result
-      run: echo "Result: ${{ steps.result.outputs.result }}"
+      run: echo "Result"
