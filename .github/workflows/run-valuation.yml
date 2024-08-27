@@ -6,6 +6,7 @@ on:
       x:
         description: 'Value for x'
         required: true
+        type: number
 
 jobs:
   run-script:
