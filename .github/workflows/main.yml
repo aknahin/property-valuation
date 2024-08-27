@@ -16,5 +16,5 @@ jobs:
       - name: Install Dependencies
         run: pip install redfin
       - name: Run Script
-        run: python your_script.py
+        run: python valuation.py
 
