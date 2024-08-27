@@ -1,7 +1,7 @@
-def function_name():
-    output = "test"
+def sum():
+    output = 1+a
     return output
 
 # Example usage
-result = function_name()
+result = sum()
 print(result)
