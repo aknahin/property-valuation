@@ -16,9 +16,10 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Run Python script
+      id: run_script  # Give an ID to the step so that its output can be referenced
       run: |
-        python valuation.py ${{ github.event.inputs.x }}
-      id: result
+        result=$(python valuation.py ${{ github.event.inputs.x }})
+        echo "::set-output name=result::$result"
     
     - name: Output the result
-      run: echo "Result"
+      run: echo "Result: ${{ steps.run_script.outputs.result }}"
