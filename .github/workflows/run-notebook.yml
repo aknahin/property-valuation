@@ -1,0 +1,35 @@
+name: Run Jupyter Notebook
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_row:
+        description: 'Starting row'
+        required: true
+        default: '0'
+      end_row:
+        description: 'Ending row'
+        required: true
+        default: '100'
+
+jobs:
+  run-notebook:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install jupyter nbconvert
+
+    - name: Run the notebook
+      env:
+        START_ROW: ${{ github.event.inputs.start_row }}
+        END_ROW: ${{ github.event.inputs.end_row }}
+      run: |
+        jupyter nbconvert --to notebook --execute Crown_Mortgage_of_the_West_git.ipynb --output Crown_Mortgage_of_the_West_git.ipynb
